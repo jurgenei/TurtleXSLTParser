@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="TurtleXSLTParser" >
-   <import file="build.ivy.xml"/>
-   <import file="build.defs.xml"/>
+    <import file="build.ivy.xml"/>
+    <import file="build.defs.xml"/>
+
+    <property name="output.dir" value="target/out"/>
+
+    <target name="do">
+        <mkdir dir="${output.dir}"/>
+        <loadfile property="ixml.txt" srcFile="src/main/resources/grammars/ixml.txt"/>
+        <xslt in="src/main/resources/grammars/ixml.xml"
+              out="${output.dir}/ixml.xml"
+              style="src/main/resources/xsl/JayParser.xsl" destdir="target">
+            <param name="input" expression="${ixml.txt}"/>
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <classpath refid="saxon.cp"/>
+        </xslt>
+    </target>
+
+<target name="clean">
+   <delete dir="${output.dir}"/>
+</target>
+
 </project>
 
