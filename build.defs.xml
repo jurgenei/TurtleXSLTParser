@@ -16,7 +16,7 @@
                   style="@{style}" failOnError="false" failOnTransformationError="false"
                   failOnNoResources="false" force="@{force}">
                 <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-                <classpath refid="ssaxon.cp"/>
+                <classpath refid="saxon.cp"/>
                 <mappers/>
             </xslt>
         </sequential>
