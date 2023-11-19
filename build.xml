@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="TurtleXSLTParser" >
-    <import file="build.ivy.xml"/>
-    <import file="build.defs.xml"/>
+    <import file="src/main/resources/ant/build.defs.xml"/>
+    <import file="src/main/resources/ant/build.ivy.xml"/>
 
     <property name="output.dir" value="target/out"/>
 

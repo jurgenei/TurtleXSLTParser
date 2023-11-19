@@ -3,5 +3,6 @@
   <dependencies>
     <dependency org="org.xmlresolver" name="xmlresolver" rev="5.2.2"/>
     <dependency org="net.sf.saxon" name="Saxon-HE" rev="12.3"/>
+    <dependency org="io.xspec" name="xspec" rev="2.3.2"/>
   </dependencies>
 </ivy-module>
