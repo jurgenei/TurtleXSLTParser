@@ -17,9 +17,11 @@
         </xslt>
     </target>
 
-<target name="clean">
-   <delete dir="${output.dir}"/>
-</target>
-
+    <target name="clean">
+        <delete dir="${output.dir}"/>
+    </target>
+    <target name="realclean">
+        <delete dir="target"/>
+    </target>
 </project>
 

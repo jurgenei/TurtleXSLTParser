@@ -3,8 +3,5 @@
   <dependencies>
     <dependency org="org.xmlresolver" name="xmlresolver" rev="5.2.2"/>
     <dependency org="net.sf.saxon" name="Saxon-HE" rev="12.3"/>
-    <dependency org="org.glassfish.jaxb" name="txw2" rev="2.2.11"/>
-    <dependency org="org.antlr" name="antlr4-runtime" rev="4.9.1"/>
-    <dependency org="commons-lang" name="commons-lang" rev="2.5"/>
   </dependencies>
 </ivy-module>
