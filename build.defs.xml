@@ -1,0 +1,24 @@
+<project name="defs">
+    <path id="saxon.cp">
+        <fileset dir="target/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+    <macrodef name="saxon">
+        <attribute name="extension" default=".xml"/>
+        <attribute name="basedir" />
+        <attribute name="destdir" />
+        <attribute name="force" default="false"/>
+        <attribute name="style"/>
+        <element name="mappers" optional="yes" implicit="yes"/>
+        <sequential>
+            <xslt extension="@{extension}" basedir="@{basedir}" destdir="@{destdir}"
+                  style="@{style}" failOnError="false" failOnTransformationError="false"
+                  failOnNoResources="false" force="@{force}">
+                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+                <classpath refid="ssaxon.cp"/>
+                <mappers/>
+            </xslt>
+        </sequential>
+    </macrodef>
+</project>
