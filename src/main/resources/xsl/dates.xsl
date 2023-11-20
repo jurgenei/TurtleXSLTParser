@@ -5,15 +5,15 @@
                 exclude-result-prefixes="#all"
                 version="3.0">
 
-<xsl:output method="xml" encoding="utf-8" indent="yes" omit-xml-declaration="yes"/>
+  <xsl:output method="xml" encoding="utf-8" indent="yes" omit-xml-declaration="yes"/>
 
-<xsl:mode on-no-match="shallow-copy"/>
+  <xsl:mode on-no-match="shallow-copy"/>
 
-<xsl:template name="xsl:initial-template">
-  <xsl:variable name="parser" select="cs:load-grammar('../grammars/dates.ixml')"/>
-  <doc>
-    <xsl:sequence select="$parser('15 February 2022')"/>
-  </doc>
-</xsl:template>
+  <xsl:template name="xsl:initial-template">
+    <xsl:variable name="parser" select="cs:load-grammar('../grammars/dates.ixml')"/>
+    <doc>
+      <xsl:sequence select="$parser('15 February 2022')"/>
+    </doc>
+  </xsl:template>
 
 </xsl:stylesheet>
