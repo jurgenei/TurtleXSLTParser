@@ -5,17 +5,49 @@
 
     <property name="output.dir" value="target/out"/>
 
-    <target name="do">
+    <target name="do.jay">
         <mkdir dir="${output.dir}"/>
         <loadfile property="ixml.txt" srcFile="src/main/resources/grammars/ixml.txt"/>
         <xslt in="src/main/resources/grammars/ixml.xml"
-              out="${output.dir}/ixml.xml"
+              out="${output.dir}/jay.xml"
               style="src/main/resources/xsl/JayParser.xsl" destdir="target">
             <param name="input" expression="${ixml.txt}"/>
             <factory name="net.sf.saxon.TransformerFactoryImpl"/>
             <classpath refid="saxon.cp"/>
         </xslt>
     </target>
+
+    <target name="do.coffeepot">
+        <mkdir dir="${output.dir}"/>
+        <!--
+             coffeepot require saxon EE!
+
+             java -cp $CLASSPATH net.sf.saxon.Transform -init:org.nineml.coffeesacks.RegisterCoffeeSacks \
+             -it -xsl:style/dates.xsl
+
+             -init:initializer
+             The value is the name of a user-supplied class that implements the interface
+             net.sf.saxon.Initializer; this initializer will be called during the initialization process,
+             and may be used to set any options required on the Configuration programmatically.
+             It is particularly useful for such tasks as registering extension functions,
+             collations, or external object models, especially in Saxon-HE where the option does not
+             exist to do this via a configuration file.
+
+             <extensionElement namespace="http://nineml.com/ns/coffeesacks"
+                factory="org.nineml.coffeesacks.RegisterCoffeeSacks"/>
+        -->
+
+        <xslt out="${output.dir}/coffeepot.xml"
+              style="src/main/resources/xsl/dates.xsl" destdir="target">
+            <factory name="net.sf.saxon.TransformerFactoryImpl">
+              <attribute name="http://saxon.sf.net/feature/allow-external-functions" value="on"/>
+              <attribute name="http://saxon.sf.net/feature/configuration-file"
+                         value="src/main/resources/saxon/config-HE.xml"/>
+            </factory>
+            <classpath refid="saxon.cp"/>
+        </xslt>
+    </target>
+
 
     <target name="clean">
         <delete dir="${output.dir}"/>
